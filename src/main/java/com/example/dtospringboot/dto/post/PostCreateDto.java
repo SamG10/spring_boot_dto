@@ -1,4 +1,4 @@
-package com.example.dtospringboot.dto;
+package com.example.dtospringboot.dto.post;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

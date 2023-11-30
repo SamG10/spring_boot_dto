@@ -3,6 +3,8 @@ package com.example.dtospringboot.models;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Entity
 @Table(name = "posts")
@@ -19,4 +21,7 @@ public class Post {
 
     @Column(name = "description", nullable = false, length = 100)
     private String description;
+
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    private List<Comment> comments;
 }

@@ -1,17 +1,18 @@
 package com.example.dtospringboot.convertors;
 
-import com.example.dtospringboot.dto.PostDto;
-import com.example.dtospringboot.models.Post;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
 @Component
 public class DtoConvertor {
-    public PostDto convertToDto(Post post, PostDto postDto){
-        return new ModelMapper().map(post,postDto.getClass());
+    private final ModelMapper modelMapper;
+    public DtoConvertor() {
+        this.modelMapper = new ModelMapper();
     }
-
-    public Post convertToEntity(Post post, PostDto postDto){
-        return new ModelMapper().map(postDto,post.getClass());
+    public <D, E> D convertToDto(E entity, Class<D> dtoClass) {
+        return modelMapper.map(entity, dtoClass);
+    }
+    public <D, E> E convertToEntity(D dto, Class<E> entityClass) {
+        return modelMapper.map(dto, entityClass);
     }
 }
